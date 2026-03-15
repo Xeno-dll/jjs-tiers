@@ -56,7 +56,6 @@
             color: #ffffff;
         }
 
-        /* Podium Styles */
         .rank-1 { background: linear-gradient(90deg, rgba(255, 215, 0, 0.1) 0%, rgba(18, 18, 18, 1) 100%) !important; border-left: 4px solid var(--gold) !important; }
         .rank-2 { background: linear-gradient(90deg, rgba(192, 192, 192, 0.1) 0%, rgba(18, 18, 18, 1) 100%) !important; border-left: 4px solid var(--silver) !important; }
         .rank-3 { background: linear-gradient(90deg, rgba(205, 127, 50, 0.1) 0%, rgba(18, 18, 18, 1) 100%) !important; border-left: 4px solid var(--bronze) !important; }
@@ -111,14 +110,14 @@
 
     <div id="loader" class="loading-screen">
         <div class="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
-        <span class="text-[10px] uppercase tracking-widest text-muted">Connecting to Database...</span>
+        <span class="text-[10px] uppercase tracking-widest" style="color:var(--text-muted)">Connecting to Database...</span>
     </div>
 
     <nav class="fixed top-0 w-full z-50 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-[#222]">
         <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
             <div class="flex items-center gap-8">
                 <div class="text-xl font-bold tracking-tighter mono cursor-pointer" onclick="navigate('leaderboard')">
-                    JJS<span class="text-muted text-sm font-normal ml-2">TIERS</span>
+                    JJS<span style="color:var(--text-muted)" class="text-sm font-normal ml-2">TIERS</span>
                 </div>
                 <div class="hidden md:flex gap-6">
                     <button onclick="navigate('leaderboard')" class="nav-link active" id="nav-leaderboard">Leaderboard</button>
@@ -137,10 +136,10 @@
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>
                     <h1 class="text-4xl font-extrabold tracking-tight mb-2 uppercase">Global Rankings</h1>
-                    <p class="text-muted text-sm">Competitive ladder synced to cloud storage.</p>
+                    <p style="color:var(--text-muted)" class="text-sm">Competitive ladder synced to cloud storage.</p>
                 </div>
                 <div class="glass-panel px-4 py-2 flex items-center gap-2">
-                    <span class="text-xs text-muted uppercase">Season</span>
+                    <span class="text-xs uppercase" style="color:var(--text-muted)">Season</span>
                     <span class="mono text-xs">04</span>
                 </div>
             </div>
@@ -148,7 +147,7 @@
             <div class="glass-panel overflow-x-auto">
                 <table class="w-full text-left border-collapse">
                     <thead>
-                        <tr class="bg-[#161616] text-[10px] uppercase tracking-widest text-muted">
+                        <tr class="bg-[#161616] text-[10px] uppercase tracking-widest" style="color:var(--text-muted)">
                             <th class="py-4 px-6 font-medium">Rank</th>
                             <th class="py-4 px-6 font-medium">Player</th>
                             <th class="py-4 px-6 font-medium text-center">Tier</th>
@@ -183,7 +182,8 @@
         <section id="page-admin-login" class="page-content hidden">
             <div class="max-w-sm mx-auto glass-panel p-8 mt-20 text-center">
                 <h2 class="text-xl font-bold uppercase mb-6">Restricted Access</h2>
-                <input type="password" id="admin-pass-input" placeholder="Admin Password" class="input-dark mb-4 text-center">
+                <input type="password" id="admin-pass-input" placeholder="Admin Password" class="input-dark mb-4 text-center"
+                    onkeydown="if(event.key==='Enter') tryAdminLogin()">
                 <button onclick="tryAdminLogin()" class="w-full btn-primary">UNLOCK PANEL</button>
             </div>
         </section>
@@ -192,30 +192,40 @@
         <section id="page-admin" class="page-content hidden">
             <div class="flex justify-between items-center mb-8">
                 <h1 class="text-3xl font-extrabold tracking-tight uppercase">Command Center</h1>
-                <button onclick="logoutAdmin()" class="text-xs text-muted hover:text-white underline">Logout</button>
+                <button onclick="logoutAdmin()" class="text-xs hover:text-white underline" style="color:var(--text-muted)">Logout</button>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Add Player & Match -->
                 <div class="space-y-6">
                     <div class="glass-panel p-6">
-                        <h2 class="text-sm font-bold uppercase mb-4 text-muted">Add New Player</h2>
+                        <h2 class="text-sm font-bold uppercase mb-4" style="color:var(--text-muted)">Add New Player</h2>
                         <div class="flex gap-2">
                             <input type="text" id="admin-name" placeholder="Name" class="input-dark">
                             <select id="admin-main" class="input-dark w-1/3">
                                 <option value="Gojo">Gojo</option>
-                                <option value="Sukuna">Sukuna</option>
-                                <option value="Yuji">Yuji</option>
-                                <option value="Megumi">Megumi</option>
+                                <option value="Yuji-Sukuna">Yuji / Sukuna</option>
                                 <option value="Hakari">Hakari</option>
-                                <option value="Hakari">Charles</option>
+                                <option value="Megumi">Megumi</option>
+                                <option value="Mahito">Mahito</option>
+                                <option value="Choso">Choso</option>
+                                <option value="Todo">Todo</option>
+                                <option value="Higuruma">Higuruma</option>
+                                <option value="Yuta">Yuta</option>
+                                <option value="Naoya">Naoya</option>
+                                <option value="Mechamaru">Mechamaru</option>
+                                <option value="Nanami">Nanami</option>
+                                <option value="LocustGuy">Ko-Guy</option>
+                                <option value="Yuki">Yuki</option>
+                                <option value="Charles">Charles</option>
+                                <option value="Haruta">Haruta</option>
                             </select>
                             <button onclick="adminAddPlayer()" class="btn-primary">ADD</button>
                         </div>
                     </div>
 
                     <div class="glass-panel p-6">
-                        <h2 class="text-sm font-bold uppercase mb-4 text-muted">Record Match Result</h2>
+                        <h2 class="text-sm font-bold uppercase mb-4" style="color:var(--text-muted)">Record Match Result</h2>
                         <div class="space-y-4">
                             <div class="grid grid-cols-2 gap-2">
                                 <select id="admin-p1" class="input-dark"></select>
@@ -233,7 +243,7 @@
                 <!-- Tournament & Player Management -->
                 <div class="space-y-6">
                     <div class="glass-panel p-6">
-                        <h2 class="text-sm font-bold uppercase mb-4 text-muted">Create Tournament</h2>
+                        <h2 class="text-sm font-bold uppercase mb-4" style="color:var(--text-muted)">Create Tournament</h2>
                         <div class="space-y-4">
                             <input type="text" id="tourney-name" placeholder="Tournament Name" class="input-dark">
                             <div class="grid grid-cols-3 gap-2">
@@ -246,10 +256,8 @@
                     </div>
 
                     <div class="glass-panel p-6">
-                        <h2 class="text-sm font-bold uppercase mb-4 text-muted">Manage Database</h2>
-                        <div class="max-h-60 overflow-y-auto space-y-2" id="admin-management-list">
-                            <!-- Populated with Players/Tournaments for deletion -->
-                        </div>
+                        <h2 class="text-sm font-bold uppercase mb-4" style="color:var(--text-muted)">Manage Database</h2>
+                        <div class="max-h-72 overflow-y-auto space-y-1 pr-1" id="admin-management-list"></div>
                     </div>
                 </div>
             </div>
@@ -259,9 +267,9 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc, collection, query, onSnapshot, addDoc, updateDoc, deleteDoc, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, collection, onSnapshot, addDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // --- FIREBASE INITIALIZATION ---
+        // ─── FIREBASE CONFIG ──────────────────────────────────────────────────────
         let firebaseConfig;
         try {
             firebaseConfig = JSON.parse(__firebase_config);
@@ -279,7 +287,7 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'jjs-tiers-v1';
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'jjs-rankings-v2';
 
         let players = [];
         let matches = [];
@@ -287,10 +295,20 @@
         let isAdmin = false;
         let currentUser = null;
 
-        // Using direct password comparison since the generated hash was incorrect
-        const ADMIN_PASS = "i-like-jjs-tiers-my-main-is-charles-@2172é!?)=?)()^^^=?";
+        // ─── PASSWORD: only the pre-computed SHA-256 hash is stored here ─────────
+        // The original plaintext password is NOT present in this source file.
+        const TARGET_HASH = "db9a8ca890654074918f620b3d05f595b506fa3443ff1ba549c2d7a88d292c8c";
 
-        // --- AUTH INIT ---
+        async function sha256(text) {
+            const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+            return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // ─── AUTH ─────────────────────────────────────────────────────────────────
+        // Auth is best-effort — if anonymous sign-in is disabled in the Firebase
+        // console the site still loads and Firestore rules decide what's allowed.
+        let listenersStarted = false;
+
         const initAuth = async () => {
             try {
                 if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
@@ -299,7 +317,9 @@
                     await signInAnonymously(auth);
                 }
             } catch (err) {
-                console.error("Auth Error:", err);
+                // Anonymous auth disabled or network error — proceed without auth.
+                console.warn("Anonymous auth unavailable, proceeding unauthenticated:", err.code);
+                startListeners();               // still try to read public data
                 document.getElementById('loader').classList.add('hidden');
             }
         };
@@ -307,67 +327,79 @@
         onAuthStateChanged(auth, (user) => {
             currentUser = user;
             if (user) {
-                setupListeners();
+                startListeners();
                 document.getElementById('loader').classList.add('hidden');
             }
         });
 
-        initAuth();
-
-        // --- FIRESTORE LISTENERS ---
-        function setupListeners() {
-            if (!currentUser) return;
-
-            onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'players'), (snap) => {
-                players = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                renderLeaderboard();
-                if (isAdmin) populateAdminTools();
-            }, (err) => console.warn("Firestore access restricted."));
-
-            onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'matches'), (snap) => {
-                matches = snap.docs.map(doc => ({ id: doc.id, ...doc.data() })).sort((a,b) => b.timestamp - a.timestamp);
-                renderMatches();
-            });
-
-            onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'tournaments'), (snap) => {
-                tournaments = snap.docs.map(doc => ({ id: doc.id, ...doc.data() })).sort((a,b) => b.timestamp - a.timestamp);
-                renderTournaments();
-                if (isAdmin) populateAdminTools();
-            });
+        function startListeners() {
+            if (listenersStarted) return;   // only attach once
+            listenersStarted = true;
+            setupListeners();
         }
 
-        // --- UI ROUTING ---
+        initAuth();
+
+        // ─── FIRESTORE LISTENERS ──────────────────────────────────────────────────
+        function setupListeners() {
+            const base = ['artifacts', appId, 'public', 'data'];
+
+            onSnapshot(collection(db, ...base, 'players'), (snap) => {
+                players = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+                renderLeaderboard();
+                if (isAdmin) populateAdminTools();
+            }, (err) => console.warn("Firestore players restricted.", err));
+
+            onSnapshot(collection(db, ...base, 'matches'), (snap) => {
+                matches = snap.docs
+                    .map(d => ({ id: d.id, ...d.data() }))
+                    .sort((a, b) => b.timestamp - a.timestamp);
+                renderMatches();
+            }, (err) => console.warn("Firestore matches restricted.", err));
+
+            onSnapshot(collection(db, ...base, 'tournaments'), (snap) => {
+                tournaments = snap.docs
+                    .map(d => ({ id: d.id, ...d.data() }))
+                    .sort((a, b) => b.timestamp - a.timestamp);
+                renderTournaments();
+                if (isAdmin) populateAdminTools();
+            }, (err) => console.warn("Firestore tournaments restricted.", err));
+        }
+
+        // ─── ROUTING ──────────────────────────────────────────────────────────────
         window.navigate = (pageId, extra = null) => {
             if (pageId === 'admin' && !isAdmin) pageId = 'admin-login';
 
             document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            
+
             const target = document.getElementById(`page-${pageId}`);
             if (target) target.classList.remove('hidden');
-            
-            const navLink = document.getElementById(`nav-${pageId.split('-')[0]}`);
-            if (navLink) navLink.classList.add('active');
+
+            const navKey = pageId.split('-')[0];
+            const navEl = document.getElementById(`nav-${navKey}`);
+            if (navEl) navEl.classList.add('active');
 
             if (pageId === 'leaderboard') renderLeaderboard();
             if (pageId === 'player') renderPlayerProfile(extra);
             if (pageId === 'admin') populateAdminTools();
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
         };
 
-        window.tryAdminLogin = () => {
+        // ─── ADMIN LOGIN ──────────────────────────────────────────────────────────
+        window.tryAdminLogin = async () => {
             const inputField = document.getElementById('admin-pass-input');
-            const input = inputField.value;
-            
+            const input = inputField.value.trim();
             if (!input) return;
-            
-            if (input === ADMIN_PASS) {
+
+            const hash = await sha256(input);
+            inputField.value = '';
+
+            if (hash === TARGET_HASH) {
                 isAdmin = true;
-                inputField.value = ""; // Clear input for security
                 navigate('admin');
             } else {
-                alert("Incorrect Password.");
-                inputField.value = ""; 
+                alert('Incorrect password.');
             }
         };
 
@@ -376,7 +408,7 @@
             navigate('leaderboard');
         };
 
-        // --- RENDERING LOGIC ---
+        // ─── HELPERS ──────────────────────────────────────────────────────────────
         function getTier(rating) {
             if (rating >= 1800) return 'S';
             if (rating >= 1600) return 'A';
@@ -385,25 +417,35 @@
             return 'D';
         }
 
+        function dbPath(...segments) {
+            // Returns a Firestore doc reference: artifacts/{appId}/public/data/{...segments}
+            return doc(db, 'artifacts', appId, 'public', 'data', ...segments);
+        }
+
+        function dbCol(segment) {
+            return collection(db, 'artifacts', appId, 'public', 'data', segment);
+        }
+
+        // ─── RENDER: LEADERBOARD ──────────────────────────────────────────────────
         function renderLeaderboard() {
             const sorted = [...players].sort((a, b) => b.rating - a.rating);
             const tbody = document.getElementById('leaderboard-body');
             if (sorted.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" class="py-10 text-center text-muted text-xs mono uppercase">No active players found</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="6" class="py-10 text-center text-xs mono uppercase" style="color:var(--text-muted)">No active players found</td></tr>`;
                 return;
             }
             tbody.innerHTML = sorted.map((p, i) => {
                 const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : '';
                 return `
-                    <tr class="cursor-pointer ${rankClass}" onclick="navigate('player', '${p.id}')">
-                        <td class="py-5 px-6 mono text-xs ${i < 3 ? 'text-white' : 'text-muted'}">${i + 1}</td>
-                        <td class="py-5 px-6 font-bold tracking-tight">${p.name}</td>
+                    <tr class="cursor-pointer ${rankClass}" onclick="navigate('player','${p.id}')">
+                        <td class="py-5 px-6 mono text-xs ${i < 3 ? 'text-white' : ''}" ${i >= 3 ? 'style="color:var(--text-muted)"' : ''}>${i + 1}</td>
+                        <td class="py-5 px-6 font-bold tracking-tight">${escHtml(p.name)}</td>
                         <td class="py-5 px-6 text-center">
                             <span class="tier-${getTier(p.rating)} text-[10px] mono uppercase tracking-widest">${getTier(p.rating)} Tier</span>
                         </td>
-                        <td class="py-5 px-6 text-sm text-muted">${p.main}</td>
+                        <td class="py-5 px-6 text-sm" style="color:var(--text-muted)">${escHtml(p.main)}</td>
                         <td class="py-5 px-6 text-xs mono">
-                            <span class="text-white">${p.wins}W</span> <span class="text-muted">/</span> <span class="text-muted">${p.losses}L</span>
+                            <span class="text-white">${p.wins}W</span> <span style="color:var(--text-muted)">/</span> <span style="color:var(--text-muted)">${p.losses}L</span>
                         </td>
                         <td class="py-5 px-6 text-right mono font-bold text-sm">${p.rating}</td>
                     </tr>
@@ -411,10 +453,11 @@
             }).join('');
         }
 
+        // ─── RENDER: MATCHES ──────────────────────────────────────────────────────
         function renderMatches() {
             const list = document.getElementById('matches-list');
             if (matches.length === 0) {
-                list.innerHTML = `<div class="text-center py-20 text-muted text-xs uppercase mono">Waiting for matches...</div>`;
+                list.innerHTML = `<div class="text-center py-20 text-xs uppercase mono" style="color:var(--text-muted)">Waiting for matches...</div>`;
                 return;
             }
             list.innerHTML = matches.map(m => `
@@ -422,81 +465,89 @@
                     <div class="flex items-center gap-8">
                         <div class="flex flex-col">
                             <span class="stat-label">Date</span>
-                            <span class="text-[10px] mono">${m.date}</span>
+                            <span class="text-[10px] mono">${escHtml(m.date)}</span>
                         </div>
                         <div class="flex items-center gap-4">
-                            <span class="font-bold ${m.winner === m.p1 ? 'text-white' : 'text-muted'}">${m.p1}</span>
-                            <span class="text-[10px] text-muted italic">VS</span>
-                            <span class="font-bold ${m.winner === m.p2 ? 'text-white' : 'text-muted'}">${m.p2}</span>
+                            <span class="font-bold ${m.winner === m.p1 ? 'text-white' : ''}" ${m.winner !== m.p1 ? 'style="color:var(--text-muted)"' : ''}>${escHtml(m.p1)}</span>
+                            <span class="text-[10px] italic" style="color:var(--text-muted)">VS</span>
+                            <span class="font-bold ${m.winner === m.p2 ? 'text-white' : ''}" ${m.winner !== m.p2 ? 'style="color:var(--text-muted)"' : ''}>${escHtml(m.p2)}</span>
                         </div>
                     </div>
                     <div class="text-right">
                         <span class="stat-label">Change</span>
-                        <div class="text-xs mono text-white">${m.change}</div>
+                        <div class="text-xs mono text-white">${escHtml(m.change)}</div>
                     </div>
                 </div>
             `).join('');
         }
 
+        // ─── RENDER: TOURNAMENTS ──────────────────────────────────────────────────
         function renderTournaments() {
             const container = document.getElementById('tournaments-container');
             if (tournaments.length === 0) {
-                container.innerHTML = `<div class="text-center py-20 text-muted text-xs uppercase mono">No tournament records.</div>`;
+                container.innerHTML = `<div class="text-center py-20 text-xs uppercase mono" style="color:var(--text-muted)">No tournament records.</div>`;
                 return;
             }
             container.innerHTML = tournaments.map(t => `
                 <div class="space-y-4">
                     <div class="flex justify-between items-end border-b border-[#222] pb-2">
-                        <h2 class="text-xl font-black uppercase tracking-tight">${t.name}</h2>
-                        <span class="text-[10px] text-muted mono">${t.date}</span>
+                        <h2 class="text-xl font-black uppercase tracking-tight">${escHtml(t.name)}</h2>
+                        <span class="text-[10px] mono" style="color:var(--text-muted)">${escHtml(t.date)}</span>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="glass-panel p-4 border-l-2 border-yellow-500">
                             <div class="stat-label">Champion</div>
-                            <div class="font-bold">${t.top1}</div>
+                            <div class="font-bold">${escHtml(t.top1)}</div>
                         </div>
                         <div class="glass-panel p-4 border-l-2 border-gray-400">
                             <div class="stat-label">Runner Up</div>
-                            <div class="font-bold">${t.top2}</div>
+                            <div class="font-bold">${escHtml(t.top2)}</div>
                         </div>
                         <div class="glass-panel p-4 border-l-2 border-orange-700">
                             <div class="stat-label">Third Place</div>
-                            <div class="font-bold">${t.top3}</div>
+                            <div class="font-bold">${escHtml(t.top3)}</div>
                         </div>
                     </div>
                 </div>
             `).join('');
         }
 
+        // ─── RENDER: PLAYER PROFILE ───────────────────────────────────────────────
         function renderPlayerProfile(id) {
             const player = players.find(p => p.id === id);
             if (!player) return;
             const pMatches = matches.filter(m => m.p1 === player.name || m.p2 === player.name);
-            const winRate = (player.wins + player.losses) === 0 ? 0 : ((player.wins / (player.wins + player.losses)) * 100).toFixed(1);
+            const total = player.wins + player.losses;
+            const winRate = total === 0 ? '0.0' : ((player.wins / total) * 100).toFixed(1);
 
             document.getElementById('player-profile-content').innerHTML = `
                 <div class="flex flex-col md:flex-row gap-8 mb-12">
                     <div class="md:w-1/3 glass-panel p-8 text-center">
-                        <div class="w-24 h-24 bg-[#1a1a1a] border border-[#333] mx-auto rounded-full mb-4 flex items-center justify-center text-3xl font-black">${player.name[0]}</div>
-                        <h1 class="text-2xl font-black uppercase">${player.name}</h1>
+                        <div class="w-24 h-24 bg-[#1a1a1a] border border-[#333] mx-auto rounded-full mb-4 flex items-center justify-center text-3xl font-black">
+                            ${escHtml(player.name[0].toUpperCase())}
+                        </div>
+                        <h1 class="text-2xl font-black uppercase">${escHtml(player.name)}</h1>
                         <span class="tier-${getTier(player.rating)} text-xs mono uppercase">${getTier(player.rating)} Tier</span>
                     </div>
                     <div class="md:w-2/3 space-y-4">
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                             <div class="glass-panel p-4"><div class="stat-label">Rating</div><div class="font-bold">${player.rating}</div></div>
                             <div class="glass-panel p-4"><div class="stat-label">Winrate</div><div class="font-bold">${winRate}%</div></div>
-                            <div class="glass-panel p-4"><div class="stat-label">Main</div><div class="font-bold">${player.main}</div></div>
+                            <div class="glass-panel p-4"><div class="stat-label">Main</div><div class="font-bold">${escHtml(player.main)}</div></div>
                         </div>
                         <div class="glass-panel p-4">
                             <h3 class="stat-label mb-4">Recent Activity</h3>
                             <div class="space-y-2">
-                                ${pMatches.length > 0 ? pMatches.map(m => `
-                                    <div class="text-xs flex justify-between p-2 bg-black/20 rounded">
-                                        <span>vs ${m.p1 === player.name ? m.p2 : m.p1}</span> 
-                                        <span class="${m.winner === player.name ? 'text-green-500' : 'text-red-500'} font-bold">
-                                            ${m.winner === player.name ? 'WIN' : 'LOSS'}
-                                        </span>
-                                    </div>`).join('') : '<div class="text-[10px] text-muted italic">No activity.</div>'}
+                                ${pMatches.length > 0
+                                    ? pMatches.slice(0, 10).map(m => `
+                                        <div class="text-xs flex justify-between p-2 rounded" style="background:rgba(0,0,0,0.2)">
+                                            <span>vs ${escHtml(m.p1 === player.name ? m.p2 : m.p1)}</span>
+                                            <span class="${m.winner === player.name ? 'text-green-500' : 'text-red-500'} font-bold">
+                                                ${m.winner === player.name ? 'WIN' : 'LOSS'}
+                                            </span>
+                                        </div>`).join('')
+                                    : '<div class="text-[10px] italic" style="color:var(--text-muted)">No activity yet.</div>'
+                                }
                             </div>
                         </div>
                     </div>
@@ -504,73 +555,151 @@
             `;
         }
 
-        // --- ADMIN DATABASE ACTIONS ---
+        // ─── ADMIN TOOLS POPULATION ───────────────────────────────────────────────
         function populateAdminTools() {
-            const selects = ['admin-p1', 'admin-p2'];
-            selects.forEach(sid => {
+            // Populate player selects for match recording
+            ['admin-p1', 'admin-p2'].forEach(sid => {
                 const el = document.getElementById(sid);
-                if (el) el.innerHTML = players.map(p => `<option value="${p.name}">${p.name}</option>`).join('');
+                if (el) el.innerHTML = players.map(p => `<option value="${escAttr(p.name)}">${escHtml(p.name)}</option>`).join('');
             });
 
-            const mgmtList = document.getElementById('admin-management-list');
-            if (!mgmtList) return;
+            const mgmt = document.getElementById('admin-management-list');
+            if (!mgmt) return;
 
-            let html = '<h3 class="text-[10px] text-muted uppercase mb-2 mt-4 font-bold">Manage Players</h3>';
-            html += players.map(p => `
-                <div class="flex justify-between items-center bg-black/40 p-2 text-xs border border-white/5 mb-1 rounded">
-                    <span>${p.name}</span>
-                    <button onclick="adminDeletePlayer('${p.id}')" class="text-red-500 hover:text-red-400 font-bold">DEL</button>
-                </div>
-            `).join('');
-            mgmtList.innerHTML = html;
+            // ── Players ──
+            let html = `<p class="text-[10px] uppercase font-bold mb-2 mt-1" style="color:var(--text-muted)">Players</p>`;
+            if (players.length === 0) {
+                html += `<p class="text-[10px] italic mb-3" style="color:var(--text-muted)">No players.</p>`;
+            } else {
+                html += players
+                    .sort((a, b) => b.rating - a.rating)
+                    .map(p => `
+                        <div class="flex justify-between items-center p-2 text-xs mb-1 rounded" style="background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.05)">
+                            <span>${escHtml(p.name)} <span style="color:var(--text-muted)">(${p.rating})</span></span>
+                            <button data-action="del-player" data-id="${escAttr(p.id)}"
+                                class="text-red-500 hover:text-red-400 font-bold px-2 py-0.5 rounded"
+                                style="background:rgba(239,68,68,0.1)">DEL</button>
+                        </div>
+                    `).join('');
+            }
+
+            // ── Tournaments ──
+            html += `<p class="text-[10px] uppercase font-bold mb-2 mt-4" style="color:var(--text-muted)">Tournaments</p>`;
+            if (tournaments.length === 0) {
+                html += `<p class="text-[10px] italic" style="color:var(--text-muted)">No tournaments.</p>`;
+            } else {
+                html += tournaments.map(t => `
+                    <div class="flex justify-between items-center p-2 text-xs mb-1 rounded" style="background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.05)">
+                        <span>${escHtml(t.name)} <span style="color:var(--text-muted)">(${escHtml(t.date)})</span></span>
+                        <button data-action="del-tourney" data-id="${escAttr(t.id)}"
+                            class="text-red-500 hover:text-red-400 font-bold px-2 py-0.5 rounded"
+                            style="background:rgba(239,68,68,0.1)">DEL</button>
+                    </div>
+                `).join('');
+            }
+
+            mgmt.innerHTML = html;
+
+            // ── Attach delete handlers via event delegation (avoids onclick-in-innerHTML issues) ──
+            mgmt.onclick = async (e) => {
+                const btn = e.target.closest('button[data-action]');
+                if (!btn) return;
+                const action = btn.dataset.action;
+                const id = btn.dataset.id;
+                if (!id) return;
+
+                if (action === 'del-player') {
+                    if (!confirm('Permanently delete this player?')) return;
+                    try {
+                        await deleteDoc(dbPath('players', id));
+                    } catch (err) {
+                        console.error('Delete player error:', err);
+                        alert('Delete failed: ' + err.message);
+                    }
+                } else if (action === 'del-tourney') {
+                    if (!confirm('Permanently delete this tournament?')) return;
+                    try {
+                        await deleteDoc(dbPath('tournaments', id));
+                    } catch (err) {
+                        console.error('Delete tournament error:', err);
+                        alert('Delete failed: ' + err.message);
+                    }
+                }
+            };
         }
 
+        // ─── ADMIN ACTIONS ────────────────────────────────────────────────────────
         window.adminAddPlayer = async () => {
-            const name = document.getElementById('admin-name').value;
+            const nameEl = document.getElementById('admin-name');
+            const name = nameEl.value.trim();
             const main = document.getElementById('admin-main').value;
-            if (!name || !currentUser) return;
-            await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'players'), {
-                name, main, rating: 1200, wins: 0, losses: 0, timestamp: Date.now()
-            });
-            document.getElementById('admin-name').value = '';
-        };
-
-        window.adminDeletePlayer = async (id) => {
-            if (confirm("Delete player?")) await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'players', id));
+            if (!name) return alert('Please enter a player name.');
+            try {
+                await addDoc(dbCol('players'), {
+                    name, main, rating: 1200, wins: 0, losses: 0, timestamp: Date.now()
+                });
+                nameEl.value = '';
+            } catch (err) {
+                console.error(err);
+                alert('Failed to add player: ' + err.message);
+            }
         };
 
         window.adminAddMatch = async () => {
             const p1Name = document.getElementById('admin-p1').value;
             const p2Name = document.getElementById('admin-p2').value;
             const winnerIdx = document.getElementById('admin-winner').value;
-            if (p1Name === p2Name) return alert("Select different players");
+
+            if (!p1Name || !p2Name) return alert('No players available.');
+            if (p1Name === p2Name) return alert('Select two different players.');
 
             const wName = winnerIdx === '1' ? p1Name : p2Name;
             const lName = winnerIdx === '1' ? p2Name : p1Name;
-
             const wp = players.find(p => p.name === wName);
             const lp = players.find(p => p.name === lName);
+            if (!wp || !lp) return alert('Could not locate one of the players.');
 
-            await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'players', wp.id), { rating: wp.rating + 20, wins: wp.wins + 1 });
-            await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'players', lp.id), { rating: Math.max(0, lp.rating - 15), losses: lp.losses + 1 });
-
-            await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'matches'), {
-                p1: p1Name, p2: p2Name, winner: wName, change: "+20 / -15", date: new Date().toLocaleDateString(), timestamp: Date.now()
-            });
-            alert("Match recorded.");
+            try {
+                await updateDoc(dbPath('players', wp.id), { rating: wp.rating + 20, wins: wp.wins + 1 });
+                await updateDoc(dbPath('players', lp.id), { rating: Math.max(0, lp.rating - 15), losses: lp.losses + 1 });
+                await addDoc(dbCol('matches'), {
+                    p1: p1Name, p2: p2Name, winner: wName,
+                    change: '+20 / -15', date: new Date().toLocaleDateString(), timestamp: Date.now()
+                });
+            } catch (err) {
+                console.error(err);
+                alert('Match submit failed: ' + err.message);
+            }
         };
 
         window.adminAddTournament = async () => {
-            const name = document.getElementById('tourney-name').value;
-            const top1 = document.getElementById('tourney-top1').value;
-            const top2 = document.getElementById('tourney-top2').value;
-            const top3 = document.getElementById('tourney-top3').value;
-            if (!name) return;
-            await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'tournaments'), {
-                name, top1, top2, top3, date: new Date().toLocaleDateString(), timestamp: Date.now()
-            });
-            alert("Tournament published.");
+            const name  = document.getElementById('tourney-name').value.trim();
+            const top1  = document.getElementById('tourney-top1').value.trim();
+            const top2  = document.getElementById('tourney-top2').value.trim();
+            const top3  = document.getElementById('tourney-top3').value.trim();
+            if (!name) return alert('Tournament name is required.');
+            try {
+                await addDoc(dbCol('tournaments'), {
+                    name, top1, top2, top3, date: new Date().toLocaleDateString(), timestamp: Date.now()
+                });
+                ['tourney-name','tourney-top1','tourney-top2','tourney-top3'].forEach(id => {
+                    document.getElementById(id).value = '';
+                });
+            } catch (err) {
+                console.error(err);
+                alert('Tournament publish failed: ' + err.message);
+            }
         };
+
+        // ─── UTILITY ──────────────────────────────────────────────────────────────
+        function escHtml(str) {
+            return String(str ?? '')
+                .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+                .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        }
+        function escAttr(str) {
+            return String(str ?? '').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+        }
     </script>
 </body>
 </html>
